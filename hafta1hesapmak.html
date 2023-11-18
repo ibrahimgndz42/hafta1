@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="lib/style.css">
+    <script src="lib/script.js"></script>
+    <title>HESAP MAKİNESİ ÖDEV</title>
+    <!--tuşların boyutları ve renkleri-->
+  <style>
+    .button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    .button2 {background-color: #008CBA;} /* Blue */
+    .button3 {background-color: #f44336;} /* Red */ 
+    .button5 {background-color: #555555;} /* Black */
+  </style>
+  </head>
+
+  <body>
+      <!-- Başlık yazdırma -->
+    <canvas id="baslik" width="350" height="50" style="border:5px solid red;"></canvas>
+    <script>
+        var baslikCanvas = document.getElementById("baslik");
+        var baslikContext = baslikCanvas.getContext("2d");
+        baslikContext.fillStyle = "green";
+        baslikContext.font = "35px Times New Roman";
+        baslikContext.fillText("HESAP MAKİNESİ", 30, 35);
+    </script>
+    <!--başlık burda bitti-->
+    <br><br>
+    <!--EKRAN-->
+    <canvas id="ekran" width="269" height="50" style="border:5px solid black;"></canvas>
+    <script>
+        var ekranCanvas = document.getElementById("ekran");
+        var ekranContext = ekranCanvas.getContext("2d");
+        var mevcutdeger = "";
+        ekranContext.font = "35px Times New Roman";
+        ekranContext.fillText(mevcutdeger, 100, 35);
+
+        function degistir(value){
+          mevcutdeger += value; 
+          ekranContext.clearRect(0, 0, ekranCanvas.width, ekranCanvas.height);
+          ekranContext.fillText(mevcutdeger, 0, 35);
+        }
+        function temizle() {
+          mevcutdeger = "";
+          ekranContext.clearRect(0, 0, ekranCanvas.width, ekranCanvas.height);
+          ekranContext.fillText(mevcutdeger, 0, 35);
+        }
+        function calc(islemler) {
+          try {
+              return eval(islemler);
+          } catch (error) {
+              return "Error";
+          }
+        }
+        function hesapla() {
+          mevcutdeger=calc(mevcutdeger)
+          ekranContext.clearRect(0, 0, ekranCanvas.width, ekranCanvas.height);
+          ekranContext.fillText(mevcutdeger, 0, 35);
+        }
+    </script>
+    <!--ekran bitti-->
+    
+    <!--Tuşlar-->
+    <button class="button button5" style="padding: 22px 32px" onclick="temizle()">C</button>
+    <br>
+    <button class="button" onclick="degistir('1')">1</button>
+    <button class="button" onclick="degistir('2')">2</button>
+    <button class="button" onclick="degistir('3')">3</button>
+    <button class="button button3" style="padding: 15px 41px" onclick="degistir('/')">/</button>
+    <br>
+    <button class="button" onclick="degistir('4')">4</button>
+    <button class="button" onclick="degistir('5')">5</button>
+    <button class="button" onclick="degistir('6')">6</button>
+    <button class="button button3" style="padding: 15px 40px" onclick="degistir('-')">-</button>
+    <br>
+    <button class="button" onclick="degistir('7')">7</button>
+    <button class="button" onclick="degistir('8')">8</button>
+    <button class="button" onclick="degistir('9')">9</button>
+    <button class="button button3" style="padding: 15px 35px" onclick="degistir('+')">+</button>
+    <br>
+    <button class="button button2" style="padding: 15px 37px" onclick="degistir('.')">.</button>
+    <button class="button" onclick="degistir('0')">0</button>
+    <button class="button button2" onclick="hesapla()">=</button>
+    <button class="button button3" style="padding: 15px 39px" onclick="degistir('*')">*</button>
+    <!--tuşlar bitti-->
+    <br><br>
+    <p>by İbrahim Gündüz</p>
+  </body>
+</html>
+
